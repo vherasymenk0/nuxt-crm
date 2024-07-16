@@ -6,9 +6,7 @@ export default defineNuxtConfig({
     componentDir: './components/ui'
   },
   modules: [
-    '@nuxtjs/tailwindcss',
-    '@nuxt/image',
-    'shadcn-nuxt',
+    '@nuxtjs/tailwindcss', '@nuxt/image', 'shadcn-nuxt',
     [
       '@nuxtjs/google-fonts', {
       families: {
@@ -19,5 +17,6 @@ export default defineNuxtConfig({
       }
     }
     ],
+    '@nuxt/icon',
   ],
 })
