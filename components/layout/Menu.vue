@@ -1,4 +1,4 @@
-<script lang="js" setup>
+<script lang="ts" setup>
 import { MENU_DATA } from './menu.data.ts'
 </script>
 <template>
