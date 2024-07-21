@@ -16,24 +16,28 @@ const authStore = useAuthStore()
 const router = useRouter()
 
 const login = async () => {
-  isLoadingStore.set(true)
-  await account.createEmailPasswordSession(email.value, password.value)
-  const response = await account.get()
-  
-  if (response) {
-    authStore.set({
-      email: response.email,
-      status: response.status,
-      name: response.name,
-    })
+  try {
+    isLoadingStore.set(true)
+    await account.createEmailPasswordSession(email.value, password.value)
+    const response = await account.get()
+    
+    if (response) {
+      authStore.set({
+        email: response.email,
+        status: response.status,
+        name: response.name,
+      })
+    }
+    
+    email.value = ''
+    password.value = ''
+    name.value = ''
+    
+    await router.push('/')
+    isLoadingStore.set(false)
+  } catch (e) {
+    throw e
   }
-  
-  email.value = ''
-  password.value = ''
-  name.value = ''
-  
-  await router.push('/')
-  isLoadingStore.set(false)
 }
 
 const register = async () => {

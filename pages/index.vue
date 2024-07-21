@@ -20,11 +20,12 @@ const { data, isLoading, refetch } = useKanbanQuery()
     <div v-else>
       <div class="grid grid-cols-5 gap-16">
         <div v-for="(col, idx) in data" :key="col.id">
-          <div class="bg-slate-700 rounded py-1 px-5 mb-2 text-center">
+          <div class="bg-slate-700 rounded py-1 px-5 mb-5 text-center">
             {{ col.name }}
           </div>
           <div>
-            <UiCard v-for="card in col.items" :key="card.id" class="mb-3" draggable="true">
+            <KanbanCreateDeal :refetch="refetch" :status="col.id"/>
+            <UiCard v-for="(card, cardIdx) in col.items" :key="card.id+cardIdx" class="mb-3" draggable="true">
               <UiCardHeader role="button">
                 <UiCardTitle>{{ card.name }}</UiCardTitle>
                 <UiCardDescription class="mt-2 block">{{ numToCurrency(card.price) }}</UiCardDescription>
