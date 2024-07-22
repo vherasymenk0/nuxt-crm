@@ -19,21 +19,15 @@ export default defineNuxtConfig({
     componentDir: './components/ui'
   },
   modules: [
-    '@nuxtjs/tailwindcss',
-    '@nuxt/image',
-    'shadcn-nuxt',
-    [
+    '@nuxt/image', '@nuxt/ui', 'shadcn-nuxt', [
       '@nuxtjs/google-fonts', {
-      families: {
-        Lato: {
-          wght: [300, 400, 700],
-          ital: [300]
-        },
+        families: {
+          Lato: {
+            wght: [300, 400, 700],
+            ital: [300]
+          },
+        }
       }
-    }
-    ],
-    '@nuxt/icon',
-    '@pinia/nuxt',
-    ['@vee-validate/nuxt', { autoImports: true }],
-  ],
+    ], '@pinia/nuxt', ['@vee-validate/nuxt', { autoImports: true }]
+  ]
 })
